@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>JSP XSSR(eflected) Index Page</title>
+</head>
+<body>
+<h1>Index</h1>
+<p> 
+	The pages linked here illustrate a basic XSS Reflected vulnerability:
+	<ul>
+		<li>Using a test case parameter <i>xmlstring</i></li>
+		<li><i>xmlstring</i> is passed through a HTTP GET request in the links below</li>
+		<li>the tests are in pairs where the content type alternates between html and xml
+	</ul>		
+</p>
+<h2>GET</h2>
+<h3>Normal</h3>
+<ul>
+	<li><a href="example001html.jsp?xmlstring=<xml><fruit>bananaz</fruit></xml>">example001.html.jsp</a></li>
+	<li><a href="example001xml.jsp?xmlstring=<xml><fruit>bananaz</fruit></xml>">example001.xml.jsp</a></li>
+</ul>
+<h3>Attack</h3>
+<ul>
+	<li><a href="example001html.jsp?xmlstring=<script>alert(1)</script>">example001.html.jsp</a></li>
+	<li><a href="example001xml.jsp?xmlstring=<script>alert(1)</script>">example001.xml.jsp</a></li>
+</ul>
+
+</body>
+</html>
